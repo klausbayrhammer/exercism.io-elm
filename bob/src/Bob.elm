@@ -7,8 +7,8 @@ hey : String -> String
 hey remark =
     let
         isShouting = remark == toUpper remark && any isAlpha remark
-        isQuestion = endsWith "?" (trim remark)
-        isSilence = length (trim remark) == 0
+        isQuestion = trim remark |> endsWith "?"
+        isSilence = trim remark == ""
         isForcefulQuestion = isShouting && isQuestion
     in
         if isForcefulQuestion then
