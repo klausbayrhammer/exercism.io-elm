@@ -10,7 +10,7 @@ distance left right =
            |> filter (not)
            |> List.length
     in
-        if not (length right == length left) then
+        if length right /= length left then
             Err "left and right strands must be of equal length"
         else
             Ok hammingDistance
