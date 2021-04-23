@@ -7,7 +7,7 @@ distance : String -> String -> Result String Int
 distance left right =
     let
         hammingDistance = List.map2 (==) (toList left) (toList right)
-           |> filter (not)
+           |> filter not
            |> List.length
     in
         if length right /= length left then
