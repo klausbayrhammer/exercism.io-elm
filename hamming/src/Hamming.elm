@@ -6,8 +6,8 @@ import String exposing (length, toList)
 distance : String -> String -> Result String Int
 distance left right =
     let
-        hammingDistance = List.map2 (\a b -> a == b) (toList left) (toList right)
-           |> filter (\x -> x == False)
+        hammingDistance = List.map2 (==) (toList left) (toList right)
+           |> filter (not)
            |> List.length
     in
         if not (length right == length left) then
