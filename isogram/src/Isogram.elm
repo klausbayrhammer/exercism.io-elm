@@ -14,10 +14,7 @@ isIsogram sentence =
 
         charOccursOnlyOnce char =
             charInSentence char == 1
-
-        removeNonLetterCharacters char =
-            char /= '-' && char /= ' '
     in
     lowerCaseSentence
-        |> String.filter removeNonLetterCharacters
+        |> String.filter Char.isAlpha
         |> String.all charOccursOnlyOnce
