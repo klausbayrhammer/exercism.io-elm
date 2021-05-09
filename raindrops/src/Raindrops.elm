@@ -4,35 +4,27 @@ module Raindrops exposing (raindrops)
 raindrops : Int -> String
 raindrops number =
     let
+        plingPlangPlong =
+            pling ++ plang ++ plong
+
         pling =
-            modBy 3 number == 0
+            modByEqualsZeroOrEmptyString 3 "Pling"
 
         plang =
-            modBy 5 number == 0
+            modByEqualsZeroOrEmptyString 5 "Plang"
 
         plong =
-            modBy 7 number == 0
+            modByEqualsZeroOrEmptyString 7 "Plong"
+
+        modByEqualsZeroOrEmptyString divisor successReturnValue =
+            if modBy divisor number == 0 then
+                successReturnValue
+
+            else
+                ""
     in
-    if pling && plang && plong then
-        "PlingPlangPlong"
-
-    else if pling && plang then
-        "PlingPlang"
-
-    else if pling && plong then
-        "PlingPlong"
-
-    else if plang && plong then
-        "PlangPlong"
-
-    else if pling then
-        "Pling"
-
-    else if plang then
-        "Plang"
-
-    else if plong then
-        "Plong"
+    if plingPlangPlong /= "" then
+        plingPlangPlong
 
     else
         String.fromInt number
