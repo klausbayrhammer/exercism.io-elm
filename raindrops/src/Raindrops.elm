@@ -5,7 +5,7 @@ raindrops : Int -> String
 raindrops number =
     let
         plingPlangPlong =
-            pling ++ plang ++ plong
+            List.filterMap identity [ pling, plang, plong ]
 
         pling =
             modByEqualsZeroOrEmptyString 3 "Pling"
@@ -18,13 +18,13 @@ raindrops number =
 
         modByEqualsZeroOrEmptyString divisor successReturnValue =
             if modBy divisor number == 0 then
-                successReturnValue
+                Just successReturnValue
 
             else
-                ""
+                Nothing
     in
-    if plingPlangPlong /= "" then
-        plingPlangPlong
+    if List.length plingPlangPlong > 0 then
+        String.concat plingPlangPlong
 
     else
         String.fromInt number
