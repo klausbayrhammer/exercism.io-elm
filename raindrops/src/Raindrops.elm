@@ -4,19 +4,15 @@ module Raindrops exposing (raindrops)
 raindrops : Int -> String
 raindrops number =
     let
+        sounds =
+            [ ( 3, "Pling" ), ( 5, "Plang" ), ( 7, "Plong" ) ]
+
         plingPlangPlong =
-            List.filterMap identity [ pling, plang, plong ]
+            sounds
+                |> List.map modByEqualsZeroOrEmptyString
+                |> List.filterMap identity
 
-        pling =
-            modByEqualsZeroOrEmptyString 3 "Pling"
-
-        plang =
-            modByEqualsZeroOrEmptyString 5 "Plang"
-
-        plong =
-            modByEqualsZeroOrEmptyString 7 "Plong"
-
-        modByEqualsZeroOrEmptyString divisor successReturnValue =
+        modByEqualsZeroOrEmptyString ( divisor, successReturnValue ) =
             if modBy divisor number == 0 then
                 Just successReturnValue
 
