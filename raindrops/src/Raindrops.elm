@@ -9,8 +9,7 @@ raindrops number =
 
         plingPlangPlong =
             sounds
-                |> List.map modByEqualsZeroOrEmptyString
-                |> List.filterMap identity
+                |> List.filterMap modByEqualsZeroOrEmptyString
 
         modByEqualsZeroOrEmptyString ( divisor, successReturnValue ) =
             if modBy divisor number == 0 then
